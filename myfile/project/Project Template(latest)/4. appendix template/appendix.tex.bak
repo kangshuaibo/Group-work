@@ -1,0 +1,30 @@
+\documentclass[runningheads]{llncs}
+\usepackage{graphicx}
+\usepackage[text={150mm,220mm},centering,nohead]{geometry}
+\pagestyle{empty}
+\begin{document}
+\title{}
+\author{}
+\institute{}
+\maketitle
+\vspace{-1cm}
+%-----------Please Do NOT change the content above.-----------------
+
+%---------------------------------------------------------------------------------------------------------------------------------
+
+%-----------Please write the project information here.---------------
+
+\Large{\textbf{Appendix}} \\ % Please write your project tile in here
+\vspace{0.2cm}
+\large{\emph{Group Members (Group number): Name1, Name2, Name3, Name4}} \\%Please write names of your group members as well as the group number in here
+\vspace{0.3cm}
+
+
+%-----------Please write the content of your research proposal from here.---------------
+\noindent This project...
+
+
+
+
+
+\end{document}

@@ -1,0 +1,196 @@
+<bpmn:process id="Process_1"> isExecutable="true">
+	<bpmn:startEvent id="startEvent_1">
+		<bpmn:outgoing>SequenceFlow_1</bpmn:outgoing>
+		<bpmn:conditionalStartDefinition />
+	</bpmn:startEvent>
+
+	<bpmn:SequenceFlow id="SequenceFlow_1" sourceRef="StartEvet_1" targetRef="exclusiveGateway_1">
+
+	<bumn:exclusiveGateway id="exclusiveGateway_1" name="regisitered?">
+		<bpmn:incoming>SequenceFlow_1</bpmn:incoming>
+		<bpmn:outgoing>SequenceFlow_2</bpmn:outgoing>
+		<bpmn:outgoing>SequenceFlow_3</bpmn:outgoing>
+	</bumn:exclusiveGateway>
+
+	<bpmn:SequenceFlow id="SequenceFlow_2" sourceRef="exclusiveGateway_1" targetRef="Task_1">
+	<bpmn:SequenceFlow id="SequenceFlow_3" sourceRef="exclusiveGateway_1" targetRef="Task_2">
+
+	<bpmn:task id="Task_1" name="Ddriver logs the system">
+		<bpmn:incoming>SecquenceFlow_2</bpmn:incoming>
+		<bpmn:incoming>SecquenceFlow_5</bpmn:incoming>
+		<bpmn:outgoing>SecquenceFlow_6</bpmn:outgoing>
+	</bpmn:task>
+
+	<bpmn:task id="Task_2" name="Driver registration">
+		<bpmn:incoming>SequenceFlow_3</bpmn:incoming>
+		<bpmn:outgoing>SequenceFlow_4</bpmn:outgoing>
+	</bpmn:task>
+
+	<bpmn:SequenceFlow id="SequenceFlow_4" sourceRef="Task_2" targetRef="Task_3">
+
+	<bpmn:task id="Task_3" name="submit the information for review.">
+		<bpmn:incoming>SequenceFlow_4</bpmn:incoming>
+		<bpmn:outgoing>SequenceFlow_5</bpmn:outgoing>
+	</bpmn:task>
+
+	<bpmn:SequenceFlow id="SequenceFlow_5" sourceRef="Task_3" targetRef="Task_1">
+	<bpmn:SequenceFlow id="SequenceFlow_6" sourceRef="Task_1" targetRef="Task_4">
+
+	<bpmn:task id="Task_4" name="enter the business.">
+		<bpmn:incoming>SequenceFlow_6</bpmn:incoming>
+		<bpmn:incoming>SequenceFlow_24</bpmn:incoming>
+		<bpmn:outgoing>SequenceFlow_7</bpmn:outgoing>
+	</bpmn:task>
+
+	<bpmn:SequenceFlow id="SequenceFlow_7" sourceRef="Task_4" targetRef="IntermediateCatchEvent_1">
+
+	<bpmn:IntermediateCatchEvent id="IntermediateCatchEvent_1">
+		<bpmn:incoming>Sequence_23</bpmn:incoming>
+		<bpmn:incoming>Sequence_27</bpmn:incoming>
+		<bpmn:incoming>Sequence_7</bpmn:incoming>
+		<bpmn:outgoing>Sequence_8</bpmn:outgoing>
+		<bpmn:messageEventDefinition />
+	<bpmn:IntermediateCatchEvent>
+
+	<bpmn:SequenceFlow id="SequenceFlow_8" sourceRef="IntermediateCatchEvent_1" targetRef="Task_5">
+
+	<bpmn:task id="Task_5" name="accept orders.">
+		<bpmn:incoming>SequenceFlow_8</bpmn:incoming>
+		<bpmn:outgoing>SequenceFlow_9</bpmn:outgoing>
+	</bpmn:task>
+
+	<bpmn:boundaryEvent id="BoundaryEvent_1" attachedToRef="Task_5">
+		<bpmn:outgoing>SequenceFlow_27</bpmn:outgoing>
+		<bpmn:TimerEventDefinition/>
+	</bpmn:boundaryEvent>  
+
+	<bpmn:SequenceFlow id="SequenceFlow_27" sourceRef="BoundaryEvent_1" targetRef="IntermediateCatchEvent_1">
+
+	<bpmn:SequenceFlow id="SequenceFlow_9" sourceRef="Task_5" targetRef="parallelGateway_1">
+
+	<bumn:parallelGateway id="parallelGateway_1" >
+		<bpmn:incoming>SequenceFlow_9</bpmn:incoming>
+		<bpmn:outgoing>SequenceFlow_10</bpmn:outgoing>
+		<bpmn:outgoing>SequenceFlow_11</bpmn:outgoing>
+	</bumn:parallelGateway>
+<!-- 10 -->
+	<bpmn:SequenceFlow id="SequenceFlow_10" sourceRef="parallelGateway_1" targetRef="Task_6">
+	
+
+	<bpmn:task id="Task_6" name="record the mileage">
+		<bpmn:incoming>SequenceFlow_10</bpmn:incoming>
+		<bpmn:outgoing>SequenceFlow_12</bpmn:outgoing>
+	</bpmn:task>
+
+	<bpmn:SequenceFlow id="SequenceFlow_12" sourceRef="Task_6" targetRef="Task_8"> 
+
+	<bpmn:task id="Task_8" name="Settlement with passengers">
+		<bpmn:incoming>SequenceFlow_12</bpmn:incoming>
+		<bpmn:outgoing>SequenceFlow_15</bpmn:outgoing>
+	</bpmn:task>
+
+	<bpmn:SequenceFlow id="SequenceFlow_15" sourceRef="Task_8" targetRef="parallelGateway_2"> 
+
+	<bumn:parallelGateway id="parallelGateway_2" >
+		<bpmn:incoming>SequenceFlow_15</bpmn:incoming>
+		<bpmn:incoming>SequenceFlow_16</bpmn:incoming>
+		<bpmn:outgoing>SequenceFlow_17</bpmn:outgoing>
+	</bumn:parallelGateway>
+<!--11-->
+    <bpmn:SequenceFlow id="SequenceFlow_11" sourceRef="parallelGateway_1" targetRef="Task_7">
+
+	<bpmn:task id="Task_7" name="wait for the passengers and">
+		<bpmn:incoming>SequenceFlow_11</bpmn:incoming>
+		<bpmn:outgoing>SequenceFlow_13</bpmn:outgoing>
+	</bpmn:task>
+
+	<bpmn:SequenceFlow id="SequenceFlow_13" sourceRef="Task_7" targetRef="Task_9"> 
+
+	<bpmn:task id="Task_9" name="Transport passengers">
+		<bpmn:incoming>SequenceFlow_13</bpmn:incoming>
+		<bpmn:outgoing>SequenceFlow_14</bpmn:outgoing>
+	</bpmn:task>   
+<!--25-->
+	<bpmn:boundaryEvent id="BoundaryEvent_2" attachedToRef="Task_9">
+		<bpmn:outgoing>SequenceFlow_25</bpmn:outgoing>
+		<bpmn:errorEventDefinition/>
+	</bpmn:boundaryEvent> 
+
+	<bpmn:SequenceFlow id="SequenceFlow_25" sourceRef="BoundaryEvent_2" targetRef="Task_11"> 
+
+	<bpmn:task id="Task_11" name="Contact the company">
+		<bpmn:incoming>SequenceFlow_25</bpmn:incoming>
+		<bpmn:outgoing>SequenceFlow_26</bpmn:outgoing>
+	</bpmn:task> 
+
+	<bpmn:SequenceFlow id="SequenceFlow_26" sourceRef="Task_11" targetRef="endEvent_1"> 
+	<!--end-->
+	<bpmn:endEvent id="endEvent_1">
+		<bpmn:incoming>SequenceFlow_22</bpmn:incoming>
+		<bpmn:incoming>SequenceFlow_26</bpmn:incoming>
+		<bpmn:endEventDefinition />
+	</bpmn:endEvent>
+
+<!--14-->
+	<bpmn:SequenceFlow id="SequenceFlow_14" sourceRef="Task_9" targetRef="Task_10"> 
+
+	<bpmn:task id="Task_10" name="Arrive at one's destination">
+		<bpmn:incoming>SequenceFlow_14</bpmn:incoming>
+		<bpmn:outgoing>SequenceFlow_16</bpmn:outgoing>
+	</bpmn:task>  
+
+	<bpmn:SequenceFlow id="SequenceFlow_16" sourceRef="Task_10" targetRef="parallelGateway_2"> 
+
+	<bpmn:SequenceFlow id="SequenceFlow_17" sourceRef="parallelGateway_2" targetRef="Task_12"> 
+
+	<bpmn:task id="Task_12" name="Settlement with company">
+		<bpmn:incoming>SequenceFlow_17</bpmn:incoming>
+		<bpmn:outgoing>SequenceFlow_18</bpmn:outgoing>
+	</bpmn:task> 
+
+	<bpmn:SequenceFlow id="SequenceFlow_18" sourceRef="Task_12" targetRef="exclusiveGateway_2"> 
+
+	<bumn:exclusiveGateway id="exclusiveGateway_2">
+		<bpmn:incoming>SequenceFlow_18</bpmn:incoming>
+		<bpmn:outgoing>SequenceFlow_19</bpmn:outgoing>
+		<bpmn:outgoing>SequenceFlow_20</bpmn:outgoing>
+		<bpmn:outgoing>SequenceFlow_21</bpmn:outgoing>
+	</bumn:exclusiveGateway>
+
+	<bpmn:SequenceFlow id="SequenceFlow_19" sourceRef="exclusiveGateway_2" targetRef="Task_13"> 
+	<bpmn:SequenceFlow id="SequenceFlow_20" sourceRef="exclusiveGateway_2" targetRef="Task_14"> 
+	<bpmn:SequenceFlow id="SequenceFlow_21" sourceRef="exclusiveGateway_2" targetRef="Task_15"> 
+
+	<bpmn:task id="Task_13" name="Continuation of business">
+		<bpmn:incoming>SequenceFlow_19</bpmn:incoming>
+		<bpmn:outgoing>SequenceFlow_23</bpmn:outgoing>
+	</bpmn:task> 
+	<bpmn:task id="Task_14" name="The driver to Take a break">
+		<bpmn:incoming>SequenceFlow_20</bpmn:incoming>
+		<bpmn:outgoing>SequenceFlow_24</bpmn:outgoing>
+	</bpmn:task> 
+	<bpmn:task id="Task_15" name="Closing of business">
+		<bpmn:incoming>SequenceFlow_21</bpmn:incoming>
+		<bpmn:outgoing>SequenceFlow_22</bpmn:outgoing>
+	</bpmn:task> 
+
+	<bpmn:SequenceFlow id="SequenceFlow_23" sourceRef="Task_13" targetRef="IntermediateCatchEvent_1" /> 
+	<bpmn:SequenceFlow id="SequenceFlow_24" sourceRef="Task_14" targetRef="Task_4" /> 
+	<bpmn:SequenceFlow id="SequenceFlow_22" sourceRef="Task_15" targetRef="endEvent_1" /> 
+</bpmn:process>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
